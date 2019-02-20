@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+input[type =submit]{
+border:2px solid transparent;
+background:darkslategray;
+color:white;
+font-size:16px;
+line-height:10px;
+padding:5px 0;
+border-radius:3px;
+width:60px;
+}
+.button{
+border:2px solid transparent;
+background:firebrick;
+color:white;
+font-size:16px;
+width:60px;
+line-height:10px;
+padding:5px 0;
+border-radius:3px;
+}
+.w3-btn{
+border:2px solid transparent;
+background:firebrick;
+color:white;
+font-size:16px;
+width:80px;
+line-height:10px;
+padding:5px 0;
+border-radius:3px;
+}
+*{
+box-sizing:border-box;
+}
+h4 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 100%;
+    color: #2F4F4F  ;
+
+}
+p {
+    font-family: 'Oswald', sans-serif;
+    color: #696969    ;
+}
+
+h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 200%;
+    color: #A52A2A  ;
+}
+a {
+    text-decoration: none;
+    font-family: 'Oswald', sans-serif;
+    color: #556B2F    ;
+}
+
+.home-base {
+    background-color: #D8BFD8   ;
+}
+
+form{
+width:100%;
+margin-top:200px;
+}
+input[type=text]{
+width:80%;
+padding:15px;
+border:5px solid;
+border-color:gainsboro;
+font-size:18px;
+font-family:sans-serif;
+border-radius:5px 5px 5px 5px;
+}
+input[type=submit]{
+padding:25px;
+width: 11%;
+height: 8.5%;
+border:5px solid;
+border-color:gray;
+font-size:18px;
+font-family:sans-serif;
+background:gray;
+color:white;
+border-radius: 5px 5px 5px 5px;
+cursor:pointer;
+position:absolute;
+}
+@media screen and (max-width:600px){
+    form{
+        margin:0;
+    }
+    input[type=text]{
+        width:100%;
+        border-radius:5px;
+        padding:10px;
+    }
+    input[type=submit][
+        border-radius:5px;
+        width:100%;
+        position:static;
+        margin-top;5px;
+        padding:10px;
+     }
+}
+</style>
+<div class="home-base">
+</br>
+    <center><h2>{{ title }}</h2>
+        <h4>by:</h4>
+        {% for data in songs %}
+            <span><a href="{{ url_for('artist_songs', artist_id=data.id, artist_name=data.name) }}">{{ data.name }}</a></br></span>
+        {% endfor %}
+    </center> 
+<br/>
+    <br/>
+    <center>
+        {% for data in lyrics %}
+                <p>{{ data }}</p>
+            
+        {% endfor %}
+    </center>
+</div>
+{% endblock %}

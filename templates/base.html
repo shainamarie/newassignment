@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<style type="text/css">
+
+.nav{
+postion:absolute;
+left:0%;
+right:0%;
+max-width:100%;
+background:black;
+margin:0;
+text-align:center;
+border-radius: 0px;
+}
+.nav ul{
+list-style-type:none;
+margin:0;
+padding:0;
+}
+.nav ul li{
+display:inline-block;
+padding:20px;
+cursor:pointer;
+}
+.nav ul li a{
+font-family: 'Oswald', sans-serif;
+font-size: 1.5em;
+text-decoration:none;
+line-height: 40px;
+color:white;
+display:block;
+}
+.nav ul li a:hover{
+color:black;
+}
+.nav ul li:hover{
+background: #ffefd5;
+color:black;
+transition:all .3s;
+}
+</style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"content="width=device-width", initial-scale=1.0">
+    <title>Music Lyric Finder</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+</head>
+    <body>
+        <header>
+
+            <div class="nav">
+                      <ul>
+                         
+                        <li><a style="font-size:150%" href="/">Home</a></li>
+                        <li><a style="font-size:150%" href="/hello">Search a Song</a></li>
+                        <li><a style="font-size:150%" href="/artists">Artists</a></li>
+                        <li><a style="font-size:150%" href="/songs">Songs</a></li>
+
+                      </ul>
+            </div>
+        </header>
+        <div class="container">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </body>
+</html>
