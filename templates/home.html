@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
 <style>
-input[type =submit]{
+input[type = submit]{
 border:2px solid transparent;
-background:darkslategray;
+background: #696969;
 color:white;
-font-size:16px;
-line-height:10px;
+font-size:13px;
+line-height:15px;
 padding:5px 0;
-border-radius:3px;
+border-radius:2px;
 width:60px;
 }
 p {
@@ -19,7 +19,25 @@ p {
 }
 h1 {
 	font-family: 'Oswald', sans-serif;
-	color: #EEE8AA;
+	color: #FFDAB9 ;
+  text-shadow: 2px 2px #556B2F;
+  font-size: 300%;
+}
+a {
+  color: #DB7093;
+  font-size: 120%;
+}
+
+th {
+  font-family: 'Oswald', sans-serif;
+  font-size: 130%;
+  color: #2F4F4F  ;
+}
+
+td {
+  font-family: 'Oswald', sans-serif;
+  font-size: 100%;
+  color: black;
 }
 .button{
 border:2px solid transparent;
@@ -42,13 +60,31 @@ padding:5px 0;
 border-radius:3px;
 }
 .home-base {
+  margin-top: 100px;
+  height: 350px;
+  max-width: 100%;
+  position: relative;
+  z-index: 2;
+  margin-left: 0;
+  margin-right: 0;
+  left: 0px;
+  right: 0px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /*z-index: 100;*/
 	/*background-color: gray;*/
-	opacity: 0.99;
-	background-image: url({{ url_for('static', filename='img/vaporwave.jpg') }});
-	min-height: calc(100vh - 70px);
+	/*opacity: 0.99;*/
+	background-image: url({{ url_for('static', filename='img/cover2.jpg') }});
+  
+	/*min-height: calc(100vh - 70px);*/
 }
 
-*{
+/*.image_container {
+    min-height: calc(100vh - 70px);
+    background-image: url({{ url_for('static', filename='img/cover.jpg') }});
+}*/
+
+/**{
 box-sizing:border-box;
 }
 form{
@@ -95,21 +131,40 @@ position:absolute;
         padding:10px;
      }
 }
-
+*/
 
 
 </style>
 <div class="home-base">
-</br>
-   <center><h1>Find the lyrics of a song with Music Lyric Finder</h1>
-   </br>
-</br>
-</br>
-</br>	
-</br>
-</br>
+  </br>
+  </br>
+  </br>
+     <center><h1>Find the lyrics of a song with Music Lyric Finder</h1>
+  </br>
+  </br>
+  </br>	
+  </br>
+  </br>
 
-   <p>You can also browse the song directory of over 100 songs</p>
-   <p>Artists Directory helps you find the songs of your favorite artists</p></center>
+      <p>You can also browse the song directory of over 100 songs</p>
+      <p>Artists Directory helps you find the songs of your favorite artists</p></center>
 </div>   
+<div class="song_container">
+    <br/><br/>
+    <center>
+    <table class="table table-striped">
+        <tr>
+            <th>Song:</th>
+            <th>Released:</th>
+            
+        </tr>
+        {% for data in songs %}
+            <tr>
+                <td><a href="{{ url_for('lyrics', song_id=data.id, song_title=data.title) }}">{{ data.title }}</a></td>
+                <td>{{ data.released }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    </center>
+</div>
 {% endblock %}

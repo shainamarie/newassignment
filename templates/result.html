@@ -34,32 +34,28 @@ border-radius:3px;
 *{
 box-sizing:border-box;
 }
-h4 {
+.home-base {
+    background-color: #F5DEB3   ;
+}
+th {
     font-family: 'Oswald', sans-serif;
-    font-size: 100%;
+    font-size: 155%;
     color: #2F4F4F  ;
 
 }
-p {
+td {
     font-family: 'Oswald', sans-serif;
-    color: #696969    ;
+    color: #808000  ;
 }
 
-h2 {
+h3 {
     font-family: 'Oswald', sans-serif;
     font-size: 200%;
     color: #A52A2A  ;
 }
 a {
     text-decoration: none;
-    font-family: 'Oswald', sans-serif;
-    color: #556B2F    ;
 }
-
-.home-base {
-    background-color: #D8BFD8   ;
-}
-
 form{
 width:100%;
 margin-top:200px;
@@ -106,26 +102,40 @@ position:absolute;
 }
 </style>
 <div class="home-base">
-</br>
-</br>
-</br>
-</br>
-</br>
-
-</br>
-    <center><h2>{{ title }}</h2>
-        <h4>by:</h4>
-        {% for data in songs %}
-            <span><a href="{{ url_for('artist_songs', artist_id=data.id, artist_name=data.name) }}">{{ data.name }}</a></br></span>
-        {% endfor %}
-    </center> 
-<br/>
-    <br/>
+    <br/><br/>
+    <center><h3>Search Results:</h3></center>
     <center>
-        {% for data in lyrics %}
-                <p>{{ data }}</p>
+    <table class="table table-striped">
+        <tr>
+            <th>Title:</th>
+            <th>Released:</th>
             
+        </tr>
+        {% for data in song1 %}
+            <tr>
+                <td><a href="{{ url_for('lyrics', song_id=data.id, song_title=data.title) }}">{{ data.title }}</a></td>
+                <td>{{ data.released }}</td>
+            </tr>
         {% endfor %}
+        {% for data in song2 %}
+            <tr>
+                <td>{{ data.text }}</td>
+                <td>{{ data.released }}</td>
+            </tr>
+        {% endfor %}
+        {% for data in song3 %}
+            <tr>
+                <td><a href="{{ url_for('lyrics', song_id=data.id, song_title=data.title) }}">{{ data.title }}</a></td>
+                <td>{{ data.released }}</td>
+            </tr>
+        {% endfor %}
+         {% for data in song4 %}
+            <tr>
+                <td>{{ data.name }}</td>
+                <td>{{ data.text }}</td>
+            </tr>
+        {% endfor %}
+    </table>
     </center>
 </div>
 {% endblock %}
